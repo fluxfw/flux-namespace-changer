@@ -1,3 +1,4 @@
+ARG ALPINE_IMAGE=alpine:latest
 ARG FLUX_AUTOLOAD_API_IMAGE=docker-registry.fluxpublisher.ch/flux-autoload/api:latest
 ARG FLUX_NAMESPACE_CHANGER_IMAGE=docker-registry.fluxpublisher.ch/flux-namespace-changer:latest
 ARG PHP_CLI_IMAGE=php:cli-alpine
@@ -9,7 +10,7 @@ ENV FLUX_NAMESPACE_CHANGER_TO_NAMESPACE FluxNamespaceChanger\\Libs\\FluxAutoload
 COPY --from=flux_autoload_api /flux-autoload-api /code
 RUN $FLUX_NAMESPACE_CHANGER_BIN
 
-FROM $PHP_CLI_IMAGE AS build
+FROM $ALPINE_IMAGE AS build
 
 COPY --from=flux_autoload_api_build /code /flux-namespace-changer/libs/flux-autoload-api
 COPY . /flux-namespace-changer
