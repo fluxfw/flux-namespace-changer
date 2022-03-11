@@ -1,0 +1,13 @@
+{
+    "description": "Change namespace of library to specific project namespace",
+    "topics": [
+        "change",
+        "changer",
+        "docker",
+        "libraries",
+        "library",
+        "namespace",
+        "php"
+    ],
+    "homepage": "https://github.com/fluxapps/flux-namespace-changer"
+}
