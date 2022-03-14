@@ -21,4 +21,10 @@ if [ -z "$to_namespace" ]; then
 fi
 export FLUX_NAMESPACE_CHANGER_TO_NAMESPACE="$to_namespace"
 
-run-in-docker docker-registry.fluxpublisher.ch/flux-namespace-changer:latest /flux-namespace-changer/bin/docker-entrypoint.php
+if [ -n "$CI_REGISTRY" ] && [ -n "$CI_PROJECT_NAMESPACE" ]; then
+    image="$CI_REGISTRY/$CI_PROJECT_NAMESPACE/flux-namespace-changer:latest"
+else
+    image="docker-registry.fluxpublisher.ch/flux-namespace-changer:latest"
+fi
+
+run-in-docker "$image" /flux-namespace-changer/bin/docker-entrypoint.php
