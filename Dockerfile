@@ -17,7 +17,7 @@ COPY . /flux-namespace-changer
 
 FROM $PHP_CLI_IMAGE
 
-LABEL org.opencontainers.image.source="https://github.com/fluxapps/flux-namespace-changer"
+LABEL org.opencontainers.image.source="https://github.com/flux-eco/flux-namespace-changer"
 LABEL maintainer="fluxlabs <support@fluxlabs.ch> (https://fluxlabs.ch)"
 
 ENV FLUX_NAMESPACE_CHANGER_BIN=/flux-namespace-changer/bin/docker-entrypoint.php
