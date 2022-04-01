@@ -5,7 +5,7 @@ namespace FluxNamespaceChanger;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
-class FluxNamespaceChanger
+class NamespaceChanger
 {
 
     private function __construct()
