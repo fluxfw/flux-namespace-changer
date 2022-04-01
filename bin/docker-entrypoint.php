@@ -3,7 +3,7 @@
 
 require_once __DIR__ . "/../autoload.php";
 
-use FluxNamespaceChanger\FluxNamespaceChanger;
+use FluxNamespaceChanger\NamespaceChanger;
 
-FluxNamespaceChanger::new()
+NamespaceChanger::new()
     ->run();
