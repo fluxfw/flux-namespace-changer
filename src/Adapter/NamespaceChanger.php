@@ -1,6 +1,6 @@
 <?php
 
-namespace FluxNamespaceChanger;
+namespace FluxNamespaceChanger\Adapter;
 
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
