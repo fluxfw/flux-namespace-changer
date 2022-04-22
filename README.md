@@ -9,7 +9,7 @@ FROM docker-registry.fluxpublisher.ch/flux-namespace-changer:latest AS xyz_build
 ENV FLUX_NAMESPACE_CHANGER_FROM_NAMESPACE Old\\Namespace
 ENV FLUX_NAMESPACE_CHANGER_TO_NAMESPACE New\\Namespace
 COPY --from=xyz /path/to/xyz /code
-RUN $FLUX_NAMESPACE_CHANGER_BIN
+RUN /flux-namespace-changer/bin/docker-entrypoint.php
 ```
 
 ```dockerfile
