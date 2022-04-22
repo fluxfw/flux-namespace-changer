@@ -18,7 +18,7 @@ FROM php:8.1-cli-alpine
 LABEL org.opencontainers.image.source="https://github.com/flux-caps/flux-namespace-changer"
 LABEL maintainer="fluxlabs <support@fluxlabs.ch> (https://fluxlabs.ch)"
 
-ENTRYPOINT /flux-namespace-changer/bin/docker-entrypoint.php
+ENTRYPOINT ["/flux-namespace-changer/bin/docker-entrypoint.php"]
 
 COPY --from=build /flux-namespace-changer /flux-namespace-changer
 
