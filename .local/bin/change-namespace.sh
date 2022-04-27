@@ -32,4 +32,4 @@ if [ -z "$tag" ]; then
     tag="latest"
 fi
 
-run-in-docker "$image:$tag" /flux-namespace-changer/bin/change-namespace.php
+run-in-docker "$image:$tag" change-namespace
