@@ -1,5 +1,5 @@
 *
-!bin/docker-entrypoint.php
+!bin/change-namespace.php
 !src
 !src/**
 !autoload.php
