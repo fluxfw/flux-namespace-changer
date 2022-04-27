@@ -20,8 +20,6 @@ LABEL maintainer="fluxlabs <support@fluxlabs.ch> (https://fluxlabs.ch)"
 
 RUN ln -s /flux-namespace-changer/bin/change-namespace.php /usr/bin/change-namespace
 
-ENTRYPOINT ["change-namespace"]
-
 COPY --from=build /flux-namespace-changer /flux-namespace-changer
 
 ARG COMMIT_SHA
