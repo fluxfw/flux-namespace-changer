@@ -27,7 +27,7 @@ else
     image="docker-registry.fluxpublisher.ch/flux-namespace-changer"
 fi
 
-tag="$1"
+tag="$3"
 if [ -z "$tag" ]; then
     tag="latest"
 fi
