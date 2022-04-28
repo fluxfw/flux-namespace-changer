@@ -5,15 +5,13 @@ Change namespace of library to specific project namespace
 ## Docker image build
 
 ```dockerfile
-FROM docker-registry.fluxpublisher.ch/flux-namespace-changer:latest AS xyz_build
-ENV FLUX_NAMESPACE_CHANGER_FROM_NAMESPACE Old\\Namespace
-ENV FLUX_NAMESPACE_CHANGER_TO_NAMESPACE New\\Namespace
-COPY --from=xyz /path/to/xyz /code
-RUN change-namespace
+FROM docker-registry.fluxpublisher.ch/flux-namespace-changer:latest AS build_namespaces
+COPY --from=xyz /path/to/xyz /code/xyz
+RUN change-namespace /code/xyz Old\\Namespace New\\Namespace
 ```
 
 ```dockerfile
-COPY --from=xyz_build /code /path/to/xyz
+COPY --from=build_namespaces /code/xyz /path/to/xyz
 ```
 
 ## Local
