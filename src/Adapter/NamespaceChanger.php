@@ -22,21 +22,27 @@ class NamespaceChanger
 
     public function run() : void
     {
-        $folder = $_ENV["FLUX_NAMESPACE_CHANGER_FOLDER"] ?? "/code";
+        global $argv;
+
+        $folder = $argv[1];
+        if (empty($folder)) {
+            echo "Please pass a folder\n";
+            die(1);
+        }
 
         $from_namespace = $this->normalizeNamespace(
-            $_ENV["FLUX_NAMESPACE_CHANGER_FROM_NAMESPACE"] ?? ""
+            $argv[2] ?? ""
         );
         if (empty($from_namespace)) {
-            echo "Please set FLUX_NAMESPACE_CHANGER_FROM_NAMESPACE\n";
+            echo "Please pass a \"from namespace\"\n";
             die(1);
         }
 
         $to_namespace = $this->normalizeNamespace(
-            $_ENV["FLUX_NAMESPACE_CHANGER_TO_NAMESPACE"] ?? ""
+            $argv[3] ?? ""
         );
         if (empty($to_namespace)) {
-            echo "Please set FLUX_NAMESPACE_CHANGER_TO_NAMESPACE\n";
+            echo "Please pass a \"to namespace\"\n";
             die(1);
         }
 
