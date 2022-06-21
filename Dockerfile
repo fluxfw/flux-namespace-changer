@@ -24,7 +24,7 @@ RUN mkdir -p /code && chown www-data:www-data -R /code
 
 RUN ln -s /flux-namespace-changer/bin/change-namespace.php /usr/bin/change-namespace
 
-USER www-data:www-data
+#USER www-data:www-data
 
 ENTRYPOINT []
 
