@@ -10,8 +10,10 @@ RUN change-namespace /code/flux-autoload-api FluxAutoloadApi FluxNamespaceChange
 
 FROM alpine:latest AS build
 
-COPY --from=build_namespaces /code/flux-autoload-api /flux-namespace-changer/libs/flux-autoload-api
-COPY . /flux-namespace-changer
+COPY --from=build_namespaces /code/flux-autoload-api /build/flux-namespace-changer/libs/flux-autoload-api
+COPY . /build/flux-namespace-changer
+
+RUN (cd /build && tar -czf flux-namespace-changer.tar.gz flux-namespace-changer)
 
 FROM php:8.1-cli-alpine
 
@@ -26,7 +28,7 @@ USER www-data:www-data
 
 ENTRYPOINT []
 
-COPY --from=build /flux-namespace-changer /flux-namespace-changer
+COPY --from=build /build /
 
 ARG COMMIT_SHA
 LABEL org.opencontainers.image.revision="$COMMIT_SHA"
