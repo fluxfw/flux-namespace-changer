@@ -1,4 +1,5 @@
 {
+    "version": "2022-06-23-1",
     "description": "Change namespace of library to specific project namespace",
     "topics": [
         "change",
