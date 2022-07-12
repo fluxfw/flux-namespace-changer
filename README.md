@@ -5,11 +5,9 @@ Change namespace of library to specific project namespace
 ## Example
 
 ```dockerfile
-FROM docker-registry.fluxpublisher.ch/flux-namespace-changer:latest AS build_namespaces
-COPY --from=xyz /path/to/xyz /code/xyz
-RUN change-namespace /code/xyz Old\\Namespace New\\Namespace
-```
+FROM php:cli-alpine
 
-```dockerfile
-COPY --from=build_namespaces /code/xyz /path/to/xyz
+RUN (mkdir -p /flux-namespace-changer && cd /flux-namespace-changer && wget -O - https://github.com/flux-eco/flux-namespace-changer/releases/download/%tag%/flux-namespace-changer-%tag%-build.tar.gz | tar -xz --strip-components=1)
+
+RUN /flux-namespace-changer/bin/change-namespace.php /path/to/xyz Old\\Namespace New\\Namespace
 ```
